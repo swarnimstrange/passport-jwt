@@ -2,12 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const passport = require("passport");
+const helmet = require("helmet");
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect("mongodb://localhost:27017/jwt");
 
 const con = mongoose.connection;
 const app = express();
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
